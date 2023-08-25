@@ -10,6 +10,7 @@ exports.additem = async (req, res, next) => {
 
     const tododata = await user.createTodolist({
       title: title,
+      status: false,
       // description: description,
     });
 
@@ -42,13 +43,14 @@ exports.getall = async (req, res, next) => {
 //update
 
 exports.updateitem = async (req, res, next) => {
-  // console.log("inside update", itemId);
+  
   try {
     const itemId = req.query.id;
     const page = req.query.page || 1;
     const todoitem = await req.user.getTodolists({ where: { id: itemId } });
     const data = await todoitem[0].update({
       title: req.body.title,
+      status: req.body.status,
       // description: req.body.description,
     });
     // console.log("page", page);

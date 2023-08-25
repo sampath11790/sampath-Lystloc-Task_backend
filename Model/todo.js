@@ -17,6 +17,10 @@ const TodoList = sequelize.define("todolists", {
   //   type: Sequelize.STRING,
   //   allowNull: false,
   // },
+  status: {
+    type: Sequelize.BOOLEAN,
+    allowNull: false,
+  },
 });
 
 module.exports = TodoList;
